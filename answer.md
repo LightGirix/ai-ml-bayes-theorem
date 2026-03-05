@@ -44,5 +44,5 @@ $P(C|A) = P(C|B)P(B|A) + P(C|\neg B)P(\neg B|A)$ \
 $P(C|A) = 0.7\times 0.9 + 0.05\times 0.1$ \
 $P(C|A) = 0.635$
 
-$P(A|C) = \dfrac{0.635\times 0.1}{0.2255}$
-$P(A/C) \approx 0.2816
+$P(A|C) = \dfrac{0.635\times 0.1}{0.2255}$ \
+$P(A/C) \approx 0.2816$
