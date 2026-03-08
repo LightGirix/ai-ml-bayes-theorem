@@ -1,7 +1,7 @@
 # Lab: Probabilistic Graphical Models & Naive Bayes
 ## Activity 1: Linear Chain
 ### Task 1: Coding (Colab)
-![linear_chain.png](https://github.com/LightGirix/ai-ml-bayes-theorem/blob/main/linear_chain.png)
+![linear_chain.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/linear_chain.png)
 
 We are given:
 | A = 0 | A = 1 |
@@ -48,7 +48,7 @@ $P(A/C) \approx 0.2816$
 
 ## Activity 2: V-Structure and Diamond Network
 ### Task 2: Coding (V-Structure)
-![v_struc.png](https://github.com/LightGirix/ai-ml-bayes-theorem/blob/main/v_struc.png)
+![v_struc.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/v_struc.png)
 
 We are given:
 | S = 0 | S = 1 |
@@ -80,7 +80,7 @@ $P(S|O) = \dfrac{0.815\times 0.2}{0.2262}$ \
 $P(S|O) \approx 0.7206$
 
 ### Task 3: Coding (Diamond Network)
-![diamond_netw.png](https://github.com/LightGirix/ai-ml-bayes-theorem/blob/main/diamond_netw.png)
+![diamond_netw.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/diamond_netw.png)
 
 Let's assume some probabilities!
 
