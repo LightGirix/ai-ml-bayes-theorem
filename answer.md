@@ -4,6 +4,7 @@
 ![linear_chain.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/linear_chain.png)
 
 We are given:
+
 | A = 0 | A = 1 |
 | ----- | ----- |
 | 0.9   | 0.1   |
@@ -51,6 +52,7 @@ $P(A/C) \approx 0.2816$
 ![v_struc.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/v_struc.png)
 
 We are given:
+
 | S = 0 | S = 1 |
 | ----- | ----- |
 | 0.8   | 0.2   |
@@ -138,7 +140,7 @@ This means that **if the AI model is a quality model, the probability of custome
 
 ## Activity 3: Complex Network Design
 ### Task 4: System Design & Calculation
-![restaurant_network.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/three_parent.png)
+![restaurant_network.png](three_parent.png)
 
 Let's design our own Bayesian Network.
 
@@ -153,8 +155,6 @@ In this case, we are modeling **customer satisfaction in a restaurant**.
 The idea is that if the restaurant performs a **good hiring assessment**, it is more likely to hire better employees and managers.  
 This can influence the **food quality**, **service quality**, and **restaurant design**, which together affect **customer satisfaction**.
 
----
-
 ### Prior Probability of A
 
 Let's assume that a restaurant has around a **60% chance of performing a good hiring assessment**.
@@ -162,8 +162,6 @@ Let's assume that a restaurant has around a **60% chance of performing a good hi
 | A = 0 | A = 1 |
 |-----|-----|
 | 0.40 | 0.60 |
-
----
 
 ### Food Quality (F)
 
@@ -176,8 +174,6 @@ If the hiring process is poor, the food quality is less likely to be good.
 | A = 0 | 0.65 | 0.35 |
 | A = 1 | 0.25 | 0.75 |
 
----
-
 ### Good Servers (G)
 
 Good hiring assessment should also increase the chances of hiring **good servers**.
@@ -187,8 +183,6 @@ Good hiring assessment should also increase the chances of hiring **good servers
 | A = 0 | 0.70 | 0.30 |
 | A = 1 | 0.20 | 0.80 |
 
----
-
 ### Good Design (H)
 
 A good hiring process might also bring in **competent managers**, who are more likely to create a well-designed restaurant environment.
@@ -197,8 +191,6 @@ A good hiring process might also bring in **competent managers**, who are more l
 |-----|-----|-----|
 | A = 0 | 0.60 | 0.40 |
 | A = 1 | 0.30 | 0.70 |
-
----
 
 ### Customer Satisfaction (J)
 
@@ -216,8 +208,6 @@ Naturally, customers are most satisfied when **all three are good**.
 | F = 1 | G = 0 | H = 1 | 0.40 | 0.60 |
 | F = 1 | G = 1 | H = 0 | 0.25 | 0.75 |
 | F = 1 | G = 1 | H = 1 | 0.05 | 0.95 |
-
----
 
 ### Finding $P(J|A)$
 
@@ -249,8 +239,6 @@ $+ (0.95\times0.75\times0.80\times0.70)$
 
 $P(J|A) \approx 0.6845$
 
----
-
 ### Final Result
 
 $P(J=1|A=1) \approx 0.68$
@@ -274,8 +262,6 @@ $[2,0,0,0]$
 
 We want to determine whether the model predicts **PlayTennis = Yes or No**.
 
----
-
 ### Step 1: Prior Probabilities
 
 From the dataset of 14 samples:
@@ -284,8 +270,6 @@ From the dataset of 14 samples:
 |-----|-----|-----|
 | Yes | 9 | $P(Yes)=\frac{9}{14}$ |
 | No | 5 | $P(No)=\frac{5}{14}$ |
-
----
 
 ### Step 2: Conditional Probabilities
 
@@ -296,16 +280,12 @@ From the dataset of 14 samples:
 | $P(Sunny\|Yes)$ | $\frac{2}{9}$ |
 | $P(Sunny\|No)$ | $\frac{3}{5}$ |
 
----
-
 #### Temperature = Cool
 
 | Class | Probability |
 |-----|-----|
 | $P(Cool\|Yes)$ | $\frac{3}{9}$ |
 | $P(Cool\|No)$ | $\frac{1}{5}$ |
-
----
 
 #### Humidity = High
 
@@ -314,16 +294,12 @@ From the dataset of 14 samples:
 | $P(High\|Yes)$ | $\frac{3}{9}$ |
 | $P(High|No)$ | $\frac{4}{5}$ |
 
----
-
 #### Wind = Strong
 
 | Class | Probability |
 |-----|-----|
 | $P(Strong\|Yes)$ | $\frac{3}{9}$ |
 | $P(Strong\|No)$ | $\frac{3}{5}$ |
-
----
 
 ### Step 3: Compute Naive Bayes
 
@@ -335,8 +311,6 @@ $P(Yes|X) = \frac{9}{14}\times\frac{2}{9}\times\frac{3}{9}\times\frac{3}{9}\time
 
 $P(Yes|X) \approx 0.0053$
 
----
-
 #### Probability of No
 
 $P(No|X) \propto P(No)P(Sunny|No)P(Cool|No)P(High|No)P(Strong|No)$
@@ -344,8 +318,6 @@ $P(No|X) \propto P(No)P(Sunny|No)P(Cool|No)P(High|No)P(Strong|No)$
 $P(No|X) = \frac{5}{14}\times\frac{3}{5}\times\frac{1}{5}\times\frac{4}{5}\times\frac{3}{5}$
 
 $P(No|X) \approx 0.0206$
-
----
 
 ### Step 4: Compare Results
 
@@ -362,8 +334,6 @@ the prediction is:
 
 **Do Not Play Tennis (No)**.
 
----
-
 ### Step 5: Comparison with Code
 
 The Python model produced a similar result (due to Laplace Smoothing in code, the probability numbers are different):
@@ -371,3 +341,4 @@ The Python model produced a similar result (due to Laplace Smoothing in code, th
 ```text
 Probability [No, Yes]: [[0.62 0.38]]
 Prediction: Do Not Play Tennis
+```
