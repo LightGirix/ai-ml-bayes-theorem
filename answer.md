@@ -256,3 +256,118 @@ $P(J|A) \approx 0.6845$
 $P(J=1|A=1) \approx 0.68$
 
 This means that **if the restaurant performs a good hiring assessment, the probability of customer satisfaction is approximately 68%**.
+## Activity 4: Naive Bayes and PlayTennis
+### Task 6: Manual Calculation vs Code (PDF)
+
+We are given the following weather condition:
+
+| Feature | Value |
+|------|------|
+| Outlook | Sunny |
+| Temperature | Cool |
+| Humidity | High |
+| Wind | Strong |
+
+Encoded as:
+
+$[2,0,0,0]$
+
+We want to determine whether the model predicts **PlayTennis = Yes or No**.
+
+---
+
+### Step 1: Prior Probabilities
+
+From the dataset of 14 samples:
+
+| Class | Count | Probability |
+|-----|-----|-----|
+| Yes | 9 | $P(Yes)=\frac{9}{14}$ |
+| No | 5 | $P(No)=\frac{5}{14}$ |
+
+---
+
+### Step 2: Conditional Probabilities
+
+#### Outlook = Sunny
+
+| Class | Probability |
+|-----|-----|
+| $P(Sunny\|Yes)$ | $\frac{2}{9}$ |
+| $P(Sunny\|No)$ | $\frac{3}{5}$ |
+
+---
+
+#### Temperature = Cool
+
+| Class | Probability |
+|-----|-----|
+| $P(Cool\|Yes)$ | $\frac{3}{9}$ |
+| $P(Cool\|No)$ | $\frac{1}{5}$ |
+
+---
+
+#### Humidity = High
+
+| Class | Probability |
+|-----|-----|
+| $P(High\|Yes)$ | $\frac{3}{9}$ |
+| $P(High|No)$ | $\frac{4}{5}$ |
+
+---
+
+#### Wind = Strong
+
+| Class | Probability |
+|-----|-----|
+| $P(Strong\|Yes)$ | $\frac{3}{9}$ |
+| $P(Strong\|No)$ | $\frac{3}{5}$ |
+
+---
+
+### Step 3: Compute Naive Bayes
+
+#### Probability of Yes
+
+$P(Yes|X) \propto P(Yes)P(Sunny|Yes)P(Cool|Yes)P(High|Yes)P(Strong|Yes)$
+
+$P(Yes|X) = \frac{9}{14}\times\frac{2}{9}\times\frac{3}{9}\times\frac{3}{9}\times\frac{3}{9}$
+
+$P(Yes|X) \approx 0.0053$
+
+---
+
+#### Probability of No
+
+$P(No|X) \propto P(No)P(Sunny|No)P(Cool|No)P(High|No)P(Strong|No)$
+
+$P(No|X) = \frac{5}{14}\times\frac{3}{5}\times\frac{1}{5}\times\frac{4}{5}\times\frac{3}{5}$
+
+$P(No|X) \approx 0.0206$
+
+---
+
+### Step 4: Compare Results
+
+| Class | Probability |
+|------|------|
+| Yes | 0.0053 |
+| No | 0.0206 |
+
+Since
+
+$P(No|X) > P(Yes|X)$
+
+the prediction is:
+
+**Do Not Play Tennis (No)**.
+
+---
+
+### Step 5: Comparison with Code
+
+The Python model produced a similar result (due to Laplace Smoothing in code, the probability numbers are different):
+
+```text
+Probability [No, Yes]: [[0.62 0.38]]
+Prediction: Do Not Play Tennis
