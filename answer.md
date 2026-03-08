@@ -136,3 +136,125 @@ By applying probability
 $P(C|A) = P(C|\neg B, \neg D)P(\neg B|A)P(\neg D|A) + P(C|\neg B,D)P(\neg B|A)P(D|A) + P(C|B,\neg D)P(B|A)P(\neg D|A) + P(C|B,D)P(B|A)P(D|A)$
 $P(C|A) = (0.05\times 0.10\times 0.65) + (0.15\times 0.10\times 0.35) + (0.90\times 0.90\times 0.65) + (0.98\times 0.90\times 0.35)$
 $P(C∣A) \approx 0.844$
+This means that **if the AI model is a quality model, the probability of customer satisfaction is approximately 84%**.
+
+## Activity 3: Complex Network Design
+### Task 4: System Design & Calculation
+![restaurant_network.png](three_parent.png)
+
+Let's design our own Bayesian Network.
+
+In this case, we are modeling **customer satisfaction in a restaurant**.
+
+- **A** : Good Hiring Assessment  
+- **F** : Quality Food  
+- **G** : Good Servers  
+- **H** : Good Design  
+- **J** : Customer Satisfaction  
+
+The idea is that if the restaurant performs a **good hiring assessment**, it is more likely to hire better employees and managers.  
+This can influence the **food quality**, **service quality**, and **restaurant design**, which together affect **customer satisfaction**.
+
+---
+
+### Prior Probability of A
+
+Let's assume that a restaurant has around a **60% chance of performing a good hiring assessment**.
+
+| A = 0 | A = 1 |
+|-----|-----|
+| 0.40 | 0.60 |
+
+---
+
+### Food Quality (F)
+
+If the hiring process is good, the restaurant is more likely to hire **better chefs**, resulting in higher food quality.
+
+If the hiring process is poor, the food quality is less likely to be good.
+
+| A | F = 0 | F = 1 |
+|-----|-----|-----|
+| A = 0 | 0.65 | 0.35 |
+| A = 1 | 0.25 | 0.75 |
+
+---
+
+### Good Servers (G)
+
+Good hiring assessment should also increase the chances of hiring **good servers**.
+
+| A | G = 0 | G = 1 |
+|-----|-----|-----|
+| A = 0 | 0.70 | 0.30 |
+| A = 1 | 0.20 | 0.80 |
+
+---
+
+### Good Design (H)
+
+A good hiring process might also bring in **competent managers**, who are more likely to create a well-designed restaurant environment.
+
+| A | H = 0 | H = 1 |
+|-----|-----|-----|
+| A = 0 | 0.60 | 0.40 |
+| A = 1 | 0.30 | 0.70 |
+
+---
+
+### Customer Satisfaction (J)
+
+Customer satisfaction depends on the **food quality, service quality, and restaurant design**.
+
+Naturally, customers are most satisfied when **all three are good**.
+
+| F | G | H | J = 0 | J = 1 |
+|-----|-----|-----|-----|-----|
+| F = 0 | G = 0 | H = 0 | 0.95 | 0.05 |
+| F = 0 | G = 0 | H = 1 | 0.85 | 0.15 |
+| F = 0 | G = 1 | H = 0 | 0.80 | 0.20 |
+| F = 0 | G = 1 | H = 1 | 0.60 | 0.40 |
+| F = 1 | G = 0 | H = 0 | 0.70 | 0.30 |
+| F = 1 | G = 0 | H = 1 | 0.40 | 0.60 |
+| F = 1 | G = 1 | H = 0 | 0.25 | 0.75 |
+| F = 1 | G = 1 | H = 1 | 0.05 | 0.95 |
+
+---
+
+### Finding $P(J|A)$
+
+Now let's find out **how likely customers are to be satisfied if the restaurant performs a good hiring assessment**.
+
+$P(J|A) = \sum_{F,G,H} P(J|F,G,H)P(F|A)P(G|A)P(H|A)$
+
+Expanding all combinations:
+
+$P(J|A) = P(J|\neg F,\neg G,\neg H)P(\neg F|A)P(\neg G|A)P(\neg H|A)$ \
+$+ P(J|\neg F,\neg G,H)P(\neg F|A)P(\neg G|A)P(H|A)$ \
+$+ P(J|\neg F,G,\neg H)P(\neg F|A)P(G|A)P(\neg H|A)$ \
+$+ P(J|\neg F,G,H)P(\neg F|A)P(G|A)P(H|A)$ \
+$+ P(J|F,\neg G,\neg H)P(F|A)P(\neg G|A)P(\neg H|A)$ \
+$+ P(J|F,\neg G,H)P(F|A)P(\neg G|A)P(H|A)$ \
+$+ P(J|F,G,\neg H)P(F|A)P(G|A)P(\neg H|A)$ \
+$+ P(J|F,G,H)P(F|A)P(G|A)P(H|A)$
+
+Substituting the values:
+
+$P(J|A) = (0.05\times0.25\times0.20\times0.30)$ \
+$+ (0.15\times0.25\times0.20\times0.70)$ \
+$+ (0.20\times0.25\times0.80\times0.30)$ \
+$+ (0.40\times0.25\times0.80\times0.70)$ \
+$+ (0.30\times0.75\times0.20\times0.30)$ \
+$+ (0.60\times0.75\times0.20\times0.70)$ \
+$+ (0.75\times0.75\times0.80\times0.30)$ \
+$+ (0.95\times0.75\times0.80\times0.70)$
+
+$P(J|A) \approx 0.729$
+
+---
+
+### Final Result
+
+$P(J=1|A=1) \approx 0.73$
+
+This means that **if the restaurant performs a good hiring assessment, the probability of customer satisfaction is approximately 73%**.
