@@ -26,19 +26,17 @@ $P(B) = P(B|A)P(A) + P(B|\neg A)P(\neg A)$ \
 $P(B) = 0.9\times 0.1 + 0.2\times 0.9$ \
 $P(B) = 0.27$
 
-|   |   |
-|---|---|
-| B = 0 | 0.73 |
-| B = 1 | 0.27 |
+| B = 0 | B = 1 |
+| ----- | ----- |
+| 0.73   | 0.27   |
 
 $P(C) = P(C|B)P(B) + P(C|\neg B)P(\neg B)$ \
 $P(C) = 0.7\times 0.27 + 0.05\times 0.73$ \
 $P(C) = 0.2255$
 
-|   |   |
-|---|---|
-| C = 0 | 0.7745 |
-| C = 1 | 0.2255 |
+| C = 0 | C = 1 |
+| ----- | ----- |
+| 0.7745   | 0.2255   |
 
 From the Chapman-Kolmogorov equation: \
 $P(C|A) = P(C|B)P(B|A) + P(C|\neg B)P(\neg B|A)$ \
@@ -249,12 +247,12 @@ $+ (0.60\times0.75\times0.20\times0.70)$ \
 $+ (0.75\times0.75\times0.80\times0.30)$ \
 $+ (0.95\times0.75\times0.80\times0.70)$
 
-$P(J|A) \approx 0.729$
+$P(J|A) \approx 0.6845$
 
 ---
 
 ### Final Result
 
-$P(J=1|A=1) \approx 0.73$
+$P(J=1|A=1) \approx 0.68$
 
-This means that **if the restaurant performs a good hiring assessment, the probability of customer satisfaction is approximately 73%**.
+This means that **if the restaurant performs a good hiring assessment, the probability of customer satisfaction is approximately 68%**.
