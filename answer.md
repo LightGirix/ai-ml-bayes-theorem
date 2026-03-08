@@ -138,7 +138,7 @@ This means that **if the AI model is a quality model, the probability of custome
 
 ## Activity 3: Complex Network Design
 ### Task 4: System Design & Calculation
-![restaurant_network.png](three_parent.png)
+![restaurant_network.png](https://raw.githubusercontent.com/LightGirix/ai-ml-bayes-theorem/main/three_parent.png)
 
 Let's design our own Bayesian Network.
 
